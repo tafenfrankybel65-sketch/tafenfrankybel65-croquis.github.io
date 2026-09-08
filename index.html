@@ -1,1 +1,544 @@
 
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SHADOW | Mon Univers</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#050505;
+    color:white;
+    overflow-x:hidden;
+}
+
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    padding:20px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(5,5,5,.75);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid #222;
+    z-index:1000;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:900;
+    letter-spacing:5px;
+}
+
+nav a{
+    color:#aaa;
+    text-decoration:none;
+    margin-left:25px;
+    font-size:14px;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:white;
+}
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:120px 20px 60px;
+    position:relative;
+    background:
+    radial-gradient(circle at center,#242424 0%,#0d0d0d 30%,#050505 70%);
+}
+
+.hero:before{
+    content:"";
+    position:absolute;
+    width:350px;
+    height:350px;
+    border-radius:50%;
+    background:#fff;
+    opacity:.035;
+    filter:blur(80px);
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+}
+
+.badge{
+    display:inline-block;
+    border:1px solid #333;
+    padding:8px 18px;
+    border-radius:30px;
+    color:#999;
+    font-size:12px;
+    letter-spacing:3px;
+    margin-bottom:25px;
+}
+
+.hero h1{
+    font-size:clamp(70px,17vw,170px);
+    letter-spacing:-8px;
+    line-height:.8;
+    margin-bottom:30px;
+}
+
+.hero h1 span{
+    color:#777;
+}
+
+.hero p{
+    color:#aaa;
+    font-size:18px;
+    max-width:600px;
+    margin:auto;
+}
+
+.buttons{
+    margin-top:35px;
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    display:inline-block;
+    padding:14px 25px;
+    border-radius:10px;
+    border:1px solid #333;
+    color:white;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+    border-color:white;
+}
+
+.btn-main{
+    background:white;
+    color:black;
+}
+
+section{
+    max-width:1100px;
+    margin:auto;
+    padding:100px 25px;
+}
+
+.title{
+    font-size:42px;
+    margin-bottom:10px;
+}
+
+.subtitle{
+    color:#777;
+    margin-bottom:40px;
+}
+
+.about{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.box{
+    background:linear-gradient(145deg,#151515,#0b0b0b);
+    border:1px solid #252525;
+    border-radius:20px;
+    padding:35px;
+    transition:.3s;
+}
+
+.box:hover{
+    transform:translateY(-5px);
+    border-color:#444;
+}
+
+.box h3{
+    margin-bottom:15px;
+    font-size:22px;
+}
+
+.box p{
+    color:#999;
+    line-height:1.8;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.card{
+    background:#101010;
+    border:1px solid #242424;
+    border-radius:18px;
+    padding:30px;
+    min-height:200px;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-7px);
+    background:#151515;
+}
+
+.icon{
+    font-size:35px;
+    margin-bottom:20px;
+}
+
+.card h3{
+    margin-bottom:10px;
+}
+
+.card p{
+    color:#888;
+    font-size:14px;
+    line-height:1.7;
+}
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+.photo{
+    aspect-ratio:1/1;
+    border-radius:18px;
+    border:1px dashed #333;
+    background:
+    linear-gradient(145deg,#171717,#080808);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:#666;
+    transition:.3s;
+}
+
+.photo:hover{
+    border-color:#777;
+    transform:scale(1.02);
+}
+
+.contact{
+    text-align:center;
+    padding:60px 25px;
+    border:1px solid #292929;
+    border-radius:25px;
+    background:linear-gradient(145deg,#151515,#080808);
+}
+
+.contact h2{
+    font-size:42px;
+    margin-bottom:15px;
+}
+
+.contact p{
+    color:#888;
+    margin-bottom:25px;
+}
+
+footer{
+    text-align:center;
+    padding:35px 20px;
+    border-top:1px solid #222;
+    color:#555;
+    font-size:13px;
+}
+
+@media(max-width:750px){
+
+    header{
+        padding:18px 20px;
+    }
+
+    nav{
+        display:none;
+    }
+
+    .hero h1{
+        letter-spacing:-5px;
+    }
+
+    .hero p{
+        font-size:16px;
+    }
+
+    .about,
+    .cards,
+    .gallery{
+        grid-template-columns:1fr;
+    }
+
+    section{
+        padding:75px 20px;
+    }
+
+    .title{
+        font-size:34px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">SHADOW</div>
+
+    <nav>
+        <a href="#accueil">Accueil</a>
+        <a href="#apropos">À propos</a>
+        <a href="#univers">Univers</a>
+        <a href="#galerie">Galerie</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+
+<section class="hero" id="accueil">
+
+    <div class="hero-content">
+
+        <div class="badge">
+            BIENVENUE DANS MON UNIVERS
+        </div>
+
+        <h1>
+            SHA<span>DOW</span>
+        </h1>
+
+        <p>
+            Créateur de contenu • Otaku • Gaming •
+            Fabrication métallique
+        </p>
+
+        <div class="buttons">
+
+            <a href="#univers" class="btn btn-main">
+                Découvrir
+            </a>
+
+            <a href="#contact" class="btn">
+                Me contacter
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="apropos">
+
+    <h2 class="title">À propos</h2>
+
+    <p class="subtitle">
+        Plusieurs passions. Une seule identité.
+    </p>
+
+    <div class="about">
+
+        <div class="box">
+            <h3>Qui est Shadow ?</h3>
+
+            <p>
+                Shadow est un univers personnel qui rassemble
+                créativité, anime, gaming, création de contenu
+                et savoir-faire dans la fabrication métallique.
+            </p>
+        </div>
+
+        <div class="box">
+            <h3>Ma vision</h3>
+
+            <p>
+                Construire quelque chose de différent, partager
+                mes passions et transformer mes idées en projets
+                réels.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="univers">
+
+    <h2 class="title">Mon univers</h2>
+
+    <p class="subtitle">
+        Découvre les différentes facettes de Shadow.
+    </p>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="icon">🎬</div>
+            <h3>Création de contenu</h3>
+            <p>
+                Vidéos, réactions, contenus courts et projets
+                pour les réseaux sociaux.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">⚔️</div>
+            <h3>Anime & Otaku</h3>
+            <p>
+                Anime, manga, personnages, théories et débats
+                entre passionnés.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🎮</div>
+            <h3>Gaming</h3>
+            <p>
+                Jeux mobiles, découvertes, gameplay et moments
+                gaming.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🔧</div>
+            <h3>Fabrication métallique</h3>
+            <p>
+                Portes, grilles et ouvrages métalliques réalisés
+                avec précision.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">📱</div>
+            <h3>Réseaux sociaux</h3>
+            <p>
+                Retrouve Shadow sur les réseaux et découvre
+                régulièrement de nouveaux contenus.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🚀</div>
+            <h3>Mes projets</h3>
+            <p>
+                Un espace qui évoluera avec mes nouvelles idées,
+                réalisations et collaborations.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="galerie">
+
+    <h2 class="title">Galerie</h2>
+
+    <p class="subtitle">
+        Mes réalisations et mes moments.
+    </p>
+
+    <div class="gallery">
+
+        <div class="photo">
+            🔧<br><br>
+            Ouvrage métallique
+        </div>
+
+        <div class="photo">
+            🎬<br><br>
+            Création de contenu
+        </div>
+
+        <div class="photo">
+            ⚔️<br><br>
+            Univers anime
+        </div>
+
+        <div class="photo">
+            🎮<br><br>
+            Gaming
+        </div>
+
+        <div class="photo">
+            🔩<br><br>
+            Fabrication
+        </div>
+
+        <div class="photo">
+            🌑<br><br>
+            Shadow
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="contact">
+
+    <div class="contact">
+
+        <h2>Entrer dans l'ombre.</h2>
+
+        <p>
+            Un projet, une collaboration ou simplement envie
+            de suivre mon univers ?
+        </p>
+
+        <div class="buttons">
+
+            <a class="btn btn-main"
+               href="https://wa.me/"
+               target="_blank">
+                WhatsApp
+            </a>
+
+            <a class="btn"
+               href="https://www.tiktok.com/"
+               target="_blank">
+                TikTok
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer>
+    © 2026 SHADOW — Tous droits réservés.
+</footer>
+
+</body>
+</html>
